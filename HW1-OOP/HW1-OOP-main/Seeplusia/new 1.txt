@@ -1,0 +1,43 @@
+ i f ( i == j )
+ f = g + h ;
+ e l s e
+ f = g − h ;
+ // code a f t e r i f / e l s e g o e s h e r e
+
+ // assuming that v a r i a b l e s f t o j a r e i n r e g i s t e r s x19−x23
+ bne x22 , x23 , El s e
+ add x19 , x20 , x21
+ beq x0 , x0 , E xi t //un c o n d i t i o n a l jump
+ El s e : sub x19 , x20 , x21
+
+ E xi t : # the code a f t e r i f / e l s e g o e s h e r e
+
+1 swi t c h ( x ) {
+2 case 1:
+3 a = b+c ;
+4 break ;
+5 case 2 :
+6 a = b−c ;
+7 break ;
+8 case 3 :
+9 a = b ∗ 2 ;
+10 break ;
+11 case 4 :
+12 a = b / 2 ;
+13 break ;
+14 d e f a u l t :
+15 a = 0 ;
+16 }
+
+
+#x19 = x, x20-x22 = a-c, x23-26 = 1-4
+
+bne x19, x20, case1
+add x20, x21, x22
+beq x0, x0, Exit
+case1 bne 
+
+
+Exit
+
+
