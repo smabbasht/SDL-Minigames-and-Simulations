@@ -1,0 +1,20 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "build project",
+            "type": "shell",
+            "command": "g++",
+            "args": [
+                "*.cpp", 
+                "-IC:\\mingw_dev_lib\\include\\SDL2\\",
+                "-LC:\\mingw_dev_lib\\lib", 
+                "-lSDL2", 
+                "-lSDL2_image"
+            ], 
+            "group": {"kind": "build","isDefault": true}
+        }
+    ]
+}
