@@ -1,0 +1,100 @@
+Elton John
+34
+AB218
+9
+7
+John Cena
+45
+XZ302
+11
+6
+Barrack Obama
+12
+MG890
+10
+9
+John Rambo
+33
+DS450
+6
+5
+Justin Beiber
+20
+KL15
+8
+7
+Hillary Clinton
+1
+UY2000
+11
+7
+Donald Trump
+49
+NC900
+12
+11
+Ross Geller
+20
+GB150
+30
+12
+Pheobe Buffay
+50
+XT1020
+30
+10
+Joey Tribbiani
+14
+OL5
+10
+5
+Monica Geller
+65
+KM1230
+60
+20
+Rachel Green
+95
+TZ647
+12
+5
+Jeremy Brown
+60
+MM60
+20
+15
+Selena Gomez
+45
+KK365
+15
+5
+Raymond Davis
+10
+VC20
+12
+2
+Phillip Fetchler
+90
+BM4050
+13
+6
+Pehlwan Goth
+12
+QE780
+60
+15
+Sakhi Hassan
+400
+ZE890
+45
+30
+Naseem Chaiwala
+12
+TT30
+10
+4
+Qasim Bella
+30
+CD645
+1
+1

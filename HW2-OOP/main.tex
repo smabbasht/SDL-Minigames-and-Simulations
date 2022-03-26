@@ -1,0 +1,100 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage{url}
+\usepackage{listings}
+\usepackage{color}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{booktabs}
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+
+\lstset{frame=tb,
+	language=C++,
+	aboveskip=3mm,
+	belowskip=3mm,
+	showstringspaces=false,
+	columns=flexible,
+	basicstyle={\small\ttfamily},
+	numbers=none,
+	numberstyle=\tiny\color{gray},
+	keywordstyle=\color{blue},
+	commentstyle=\color{dkgreen},
+	stringstyle=\color{mauve},
+	breaklines=true,
+	breakatwhitespace=true,
+	tabsize=3
+}
+\begin{document}
+	
+	\title{CS-224 Object Oriented Programming and Design Methodologies }
+	\author{Spring 2022}
+	\date{Homework 2}
+	\maketitle
+	\section{Submission Policy}
+	You need to submit this homework on  {\color{blue}11th February at 8pm}, on LMS. Late submissions are allowed until {\color{red} 13th February 11:59pm}, which will be penalized by 20\%. Your work will not be accepted once the submission is closed on LMS.
+	
+	\section{Guidelines}
+		Some important guidelines about the homework are as following:
+	\begin{itemize}
+		\item You need to do this homework alone
+
+		\item You need to follow the best programming practices as given in the accompanying document and it is also present on LMS. Failure in doing so will have your marks deducted.
+		\item Submit assignment on time; late submissions will not be accepted.
+		\item Some assignments will require you to submit multiple files. Always Zip and send them.
+		\item It is better to submit incomplete assignment than none at all.
+		\item It is better to submit the work that you have done yourself than what you have plagiarized.
+		\item It is strongly advised that you start working on the assignment the day you get it. Assignments WILL take time.
+		\item Every assignment you submit should be a single zipped file containing all the other files. Suppose your name is John Doe and your id is 0022 so the name of the submitted file should be JohnDoe0022.zip
+		\item DO NOT send your assignment to your instructor, if you do I will just mark your assignment as ZERO for not following clear instructions.
+		\item You can be called in for Viva for any assignment that you submit
+	\end{itemize}
+	
+	\newpage
+	
+	\section{Ghost Busters}
+	
+	The Ghost Busters is a tiny simple game to find position of a ghost, hidden somewhere in the grid. Initially all the blocks in grid are locked, and then the player clicks any of the block to get some information about the ghost location. Here are the rules of various objects being displayed upon click:
+
+	\begin{itemize}
+		\item A snake is drawn if the clicked block is 0-1 blocks away from the ghost
+		\item A turtle is drawn if the clicked block is 2-3 blocks away from the ghost
+		\item A bunny is drawn if the clicked block is 4 blocks away from the ghost
+		\item if the clicked block is more than 4 blocks away, a snake, turtle or a bunny is drawn randomly.
+	\end{itemize}
+
+After exploring certain blocks of the game, the player finally busts the ghost with a right-click. If the ghost location was correct, then a ghost is drawn on that block else the game is failed.  The solution of this game is provided alongwith this homework, please play this game many times to correctly understand the working. 
+
+A bare-bone code is already given with this homework \texttt{GhostBusters $\Rightarrow$ GhostBuster.cpp}, please follow the comments inside the code to write your solution. You're not supposed to change anything in other files.
+
+
+	\section{Rubric}
+	\begin{table}[h]
+	    \centering
+	    \begin{tabular}{llc}
+	    \toprule
+            Warnings/Errors	& The code had no warnings/errors	& 1 \\
+            Comments &	The code was properly commented	& 1 \\
+            Coding	& The code followed best practices guideline &	4 \\
+            Game Logic	& Game logic is fully implemented	& 4 \\
+            \midrule
+            Total & & 10\\
+            \bottomrule
+	    \end{tabular}
+	    \caption{Grading Rubric}
+	    \label{Grading}
+	\end{table}
+
+% 	\pagebreak
+		
+
+
+\section{How to compile}
+Open the given \texttt{GhostBusters} folder in vscode by choosing \texttt{File $\Rightarrow$ Open Folder}. The game can be run by simply pressing F5 from vscode. If due to some reason it doesn't work, then go compiling and running it from terminal, as explained in \texttt{how to compile.txt}
+
+
+\section{Acknowledgement}
+This assignment is adapted from \href{https://www.youtube.com/watch?v=sMNbLXsvRig}{UCBerkeley CS188 Probabilistic Inference}.	
+	
+	
+\end{document}
