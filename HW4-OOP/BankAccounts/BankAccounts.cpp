@@ -2,8 +2,9 @@
 #include<fstream>
 #include "Account.hpp"
 
-string filename = "bankinput.txt";
-ofstream outfile (filename);
+string outfilename = "bankinput.txt";
+string infilename = "bankinput.txt";
+ofstream outfile (outfilename);
 
 vector<string> ExtractLines(string filename)
 {
@@ -15,7 +16,13 @@ vector<string> ExtractLines(string filename)
     while (getline(input_file, line)){
         lines.push_back(line);
     }
-    lines.push_back("last line");
+    //lines.push_back("last line");
+
+    for (int i = 0; i < 10; i++)
+    {
+        cout << lines[i] << "hi";
+    }
+ 
     return lines;
 }
 
@@ -84,17 +91,16 @@ void WriteAccountFile(Account acc){
 
 int main()
 {
-    string infilename = "bankinput.txt";
-    string outfilename = "results.txt";
-    ofstream outfile (outfilename);
-    
     vector<Account> Accounts;
     vector<string>  Codes;
     vector<string>  Lines = ExtractLines(infilename);
     vector<string> inputs;
+ //   cout << Lines.size();
+    
 
     for(int i=0; i<Accounts.size(); i++)    
         inputs = ParseLine(Lines[i]);
+        
         if (inputs[0] == "Create"){
             CreateAccount(Accounts, inputs, Codes);
         }

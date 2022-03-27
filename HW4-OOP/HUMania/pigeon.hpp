@@ -3,7 +3,7 @@
 class Pigeon{
 
     SDL_Rect srcRect, moverRect;
-    int frame = 0;
+    int state = 0;
 
 public:
     // add the fly function here as well.
@@ -11,4 +11,5 @@ public:
     void fly();
     Pigeon(); 
     // may add other overloaded constructors here... 
+    Pigeon(int x, int y);
 };
