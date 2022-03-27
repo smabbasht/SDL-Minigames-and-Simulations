@@ -20,7 +20,8 @@ class Date
         cout << day << "-" << month << "-" << year;
     }
 
-    void showslash(){
-        cout << day << "/" << month << "/" << year;
+    string showslash(){
+        string text = to_string(day) + "/" + to_string(month) + "/" + to_string(year);
+        return text;
     }
 };

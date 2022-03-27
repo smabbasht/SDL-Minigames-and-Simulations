@@ -2,11 +2,42 @@
 #include<fstream>
 #include "Account.hpp"
 
-vector<string> ReadLine(){
+string filename = "bankinput.txt";
+ofstream outfile (filename);
+
+vector<string> ExtractLines(string filename)
+{
+    vector<string> lines;
+    string line;
+
+    ifstream input_file(filename);
+
+    while (getline(input_file, line)){
+        lines.push_back(line);
+    }
+    lines.push_back("last line");
+    return lines;
+}
+
+vector<string> ParseLine(string str){
     vector<string> inputs;
-    cin >> inputs[0] >> inputs[1] >> inputs[2];
-    int amount; cin >> amount;
-    inputs[3] = to_string(amount);
+    
+    string word = "";
+    int i = 0;
+    for (auto x : str) 
+    {
+        if (x == ' ')
+        {
+            inputs[i] = word;
+            word = "";
+            i++;
+        }
+        else {
+            word = word + x;
+        }
+    }
+
+    inputs[i] = word;
     return inputs;
 }
 
@@ -28,10 +59,11 @@ void setAccountstatuses(vector<Account> acc_vect){
 }
 
 
-void WriteAccountFile(Account acc, string filename){
-    
+void WriteAccountFile(Account acc){
+    // fstream file;
+    // file.open(filename);
 
-    outfile << "Account Title: "    << acc.namewithoutdash() <<         endl
+    outfile << "Account Title: "    << acc.namewithoutdash() <<     endl
         << "Account Code: "     << acc.code <<                      endl
         << "Initial Balance: "  << acc.initBalance <<               endl
         << "Available Balance: "<< acc.netBalance <<                endl
@@ -52,31 +84,35 @@ void WriteAccountFile(Account acc, string filename){
 
 int main()
 {
-    string write_string;
-    string filename = "bankinput.txt";
+    string infilename = "bankinput.txt";
+    string outfilename = "results.txt";
+    ofstream outfile (outfilename);
+    
     vector<Account> Accounts;
     vector<string>  Codes;
-    //while(){} // Pending
-    vector<string> inputs = ReadLine();
-    if (inputs[0] == "Create"){
-        CreateAccount(Accounts, inputs, Codes);
-    }
-    else{
-        int index = 0;
-        for(int i=0; i<Codes.size(); i++){
-            if (Codes[i] == inputs[1]){
-                index = i; 
-                break;
-            }
-        Accounts[i].add_entry(inputs);
+    vector<string>  Lines = ExtractLines(infilename);
+        
+    for(int i=0; i<Accounts.size(); i++)    
+        vector<string> inputs = ParseLine(Lines[i]);
+        if (inputs[0] == "Create"){
+            CreateAccount(Accounts, inputs, Codes);
         }
-    }
+        else{
+            int index;
+            for(int i=0; i<Codes.size(); i++){
+                if (Codes[i] == inputs[1]){
+                    index = i; 
+                    break;
+                }
+            Accounts[i].add_entry(inputs);
+            }
+        }
 
     setAccountstatuses(Accounts);
 
     for (int i = 0; i < Accounts.size(); i++)
     {
-        WriteAccountFile(Accounts[i], filename);
+        WriteAccountFile(Accounts[i]);
     }
     return 0;
 }

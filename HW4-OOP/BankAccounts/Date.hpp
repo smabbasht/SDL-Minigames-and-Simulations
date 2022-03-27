@@ -10,5 +10,5 @@ class Date
 
     void show(){}
 
-    void showslash(){}
+    string showslash(){}
 };
