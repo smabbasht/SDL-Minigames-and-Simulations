@@ -1,65 +1,62 @@
-Account Title: Ghani_Saeed
+Account Title: Ghani Saeed
 Account Code: GH090
 Initial Balance: 2000
-Available Balance: -108000
+Available Balance: 28000
 Current Status: Active
 Deposits:
-0. 30000 on 0/14826928/21 Successful
-1. 20000 on 0/14827408/21 Successful
-2. 2000 on 0/14827040/21 Successful
-Withdrawals
-0. 40000 on 0/14825280/21 Successful
-1. 10000 on 0/14827136/21 Successful
-2. 60000 on 0/6981904/21 Successful
-3. 50000 on 0/14827040/21 Successful
-4. 2000 on 0/6981904/21 Successful
-Account Title: Ayesha_Sultan
+1. 30000 on 11/03/21
+Withdrawals:
+1. 4000 on 12/04/21 Successful
+2. 40000 on 15/jun/21 Denied
+
+Account Title: Ayesha Sultan
 Account Code: AS550
 Initial Balance: 50000
-Available Balance: 102000
-Current Status: Dormant
+Available Balance: 10000
+Current Status: Active
 Deposits:
-0. 30000 on 0/14826928/21 Successful
-1. 20000 on 0/14827408/21 Successful
-2. 2000 on 0/14827040/21 Successful
-Withdrawals
-0. 10000 on 0/14827136/21 Denied
-1. 50000 on 0/14827040/21 Denied
-2. 2000 on 0/6981904/21 Denied
-Account Title: Millat_Motors
+No Deposits for this account
+Withdrawals:
+1. 40000 on 23/04/21 Successful
+2. 60000 on 5/05/21 Denied
+
+Account Title: Millat Motors
 Account Code: MM344
 Initial Balance: 1200000
-Available Balance: 1252000
-Current Status: Dormant
+Available Balance: 1150000
+Current Status: Active
 Deposits:
-0. 30000 on 0/14826928/21 Successful
-1. 20000 on 0/14827408/21 Successful
-2. 2000 on 0/14827040/21 Successful
-Withdrawals
-0. 10000 on 0/14827136/21 Denied
-1. 2000 on 0/6981904/21 Denied
-Account Title: Jami_Cengez
+No Deposits for this account
+Withdrawals:
+1. 50000 on 5/05/21 Successful
+
+Account Title: Jami Cengez
 Account Code: JC554
 Initial Balance: 500
-Available Balance: 12500
-Current Status: Dormant
+Available Balance: 28500
+Current Status: Active
 Deposits:
-0. 20000 on 0/14827408/21 Successful
-1. 2000 on 0/14827040/21 Successful
-Withdrawals
-0. 10000 on 0/14827136/21 Successful
-Account Title: Multan_Sultan
+1. 30000 on 25/04/21
+Withdrawals:
+1. 2000 on 22/jun/21 Successful
+
+Account Title: Multan Sultan
 Account Code: MS443
 Initial Balance: 500000
-Available Balance: 520000
-Current Status: Dormant
+Available Balance: 492000
+Current Status: Active
 Deposits:
-0. 20000 on 0/14827408/21 Successful
-Withdrawals
-Account Title: Jasmin_Banda
+1. 2000 on 20/jun/21
+Withdrawals:
+1. 10000 on 27/04/21 Successful
+
+Account Title: Jasmin Banda
 Account Code: JB230
 Initial Balance: 70000
-Available Balance: 70000
-Current Status: Dormant
+Available Balance: 90000
+Current Status: Active
 Deposits:
-Withdrawals
+1. 20000 on 28/04/21
+Withdrawals:
+No Withdrawals for this account
+

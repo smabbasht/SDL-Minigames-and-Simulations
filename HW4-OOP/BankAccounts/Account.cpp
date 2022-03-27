@@ -4,16 +4,17 @@ Account::Account(vector<string> array)
 {
     vector<Transaction> Withdrawals;
     vector<Transaction> Deposits;
+    netBalance  = stoi(array[3]);
+    initBalance = stoi(array[3]);
     status = "Active";
-    initBalance = netBalance = stoi(array[3]);
-    code = array[2];
-    title = array[1];
+    code   = array[2];
+    title  = array[1];
     // cout << array[1] << ' ' << array[2] << ' ' << array[3] << ' ' << endl;
 }
 
 string Account::namewithoutdash()
 {
-    replace((title).begin(), (title).end(), '-', ' ');
+    replace((title).begin(), (title).end(), '_', ' ');
     return title;
 }
 
@@ -23,10 +24,10 @@ void Account::add_entry(vector<string> array)
     if (array[0] == "Withdrawal")
     {
         Transaction with1 = {stoi(array[2]), date1, "Successful"};
-        if (with1.Amount >= netBalance)
+        if (netBalance >= with1.Amount)
         {
             // cout << array[2] << endl;
-            netBalance -= stoi(array[2]); // Error here
+            netBalance -= with1.Amount; // Error here
         }
         else
         {
@@ -39,7 +40,7 @@ void Account::add_entry(vector<string> array)
     {
         Transaction dep1 = {stoi(array[2]), date1, "Successful"};
         // cout << array[1] << endl;
-        netBalance += stoi(array[2]); // Error Here too
+        netBalance += dep1.Amount; // Error Here too
         Deposits.push_back(dep1);
     }
 }

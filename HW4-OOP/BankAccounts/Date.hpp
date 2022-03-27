@@ -3,9 +3,9 @@ using namespace std;
 
 class Date
 {
-    int year, month, day;
+    string year, month, day;
 
-public:
+    public:
     Date(string date);
 
     void show();

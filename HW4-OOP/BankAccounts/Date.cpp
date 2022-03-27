@@ -2,19 +2,44 @@
 #include <iostream>
 using namespace std;
 #include "Date.hpp"
+#include <sstream>
 
 Date::Date(string date)
 {
-    // Making Character array for applying strtok function
-    char date_array[date.length()];
-    for (int i = 0; i < sizeof(date_array); i++)
+
+    vector<string> dateparse;
+    stringstream ss(date); // Turn the string into a stream.
+    string tok;
+
+    while (getline(ss, tok, '-'))
     {
-        date_array[i] = date[i];
-        // Getting Date & Month and setting Year to 21 as default
-        char *day = strtok(date_array, "-");
-        char *month = strtok(NULL, "-");
-        year = 21;
+        dateparse.push_back(tok);
     }
+    day   = dateparse[0];
+    year  = "21";
+    month = "";
+    for(int monthtrimmer=0; monthtrimmer<3; monthtrimmer++)
+    {
+        month += tolower(dateparse[1][monthtrimmer]); 
+    }
+    
+    vector<string> Months;
+    Months = {"jan", "feb", "mar", "apr", "may", "jun"
+              "jul", "aug", "sep", "oct", "nov", "dec"};
+    for (int monthNum = 0; monthNum < Months.size(); monthNum++)
+    {
+        if(Months[monthNum]==month)
+        {
+            if (monthNum<10){
+                month = "0"+to_string(monthNum+1);
+            }
+            else{
+                month = to_string(monthNum+1);
+            }
+            break;
+        }
+    }
+    
 }
 
 void Date::show()
@@ -24,6 +49,6 @@ void Date::show()
 
 string Date::showslash()
 {
-    string text = to_string(day) + '/' + to_string(month) + '/' + to_string(year);
+    string text = day + '/' + month + '/' + year;
     return text;
 }

@@ -57,11 +57,11 @@ void setAccountstatuses(vector<Account> &acc_vect)
     {
         if (acc_vect[acc_vect_dumy].netBalance < 5000)
         {
-            acc_vect[acc_vect_dumy].status = "Active";
+            acc_vect[acc_vect_dumy].status = "Dormant";
         }
         else
         {
-            acc_vect[acc_vect_dumy].status = "Dormant";
+            acc_vect[acc_vect_dumy].status = "Active";
         }
     }
 }
@@ -79,27 +79,35 @@ void WriteAccountFile(Account acc)
             << "Current Status: " << acc.status << endl;
 
     outfile << "Deposits:" << endl;
-    for (int acc_deposit_dumy = 0; acc_deposit_dumy < acc.Deposits.size(); acc_deposit_dumy++)
+    
+    if(acc.Deposits.size()>0)
     {
-        outfile << acc_deposit_dumy << ". " << acc.Deposits[acc_deposit_dumy].Amount << " on "
-                << acc.Deposits[acc_deposit_dumy].Date.showslash() << " "
-                << acc.Deposits[acc_deposit_dumy].success << endl;
-        cout << acc_deposit_dumy << ". " << acc.Deposits[acc_deposit_dumy].Amount << " on "
-             << acc.Deposits[acc_deposit_dumy].Date.showslash() << " "
-             << acc.Deposits[acc_deposit_dumy].success << endl;
+        for (int acc_deposit_dumy = 0; acc_deposit_dumy < acc.Deposits.size(); acc_deposit_dumy++)
+        {
+            outfile << acc_deposit_dumy+1 << ". " << acc.Deposits[acc_deposit_dumy].Amount << " on "
+                    << acc.Deposits[acc_deposit_dumy].Date.showslash() << endl;
+        }
     }
-
-    outfile << "Withdrawals" << endl;
-    for (int acc_withdrawal_dumy = 0; acc_withdrawal_dumy < acc.Withdrawals.size(); acc_withdrawal_dumy++)
+    else
     {
-        outfile << acc_withdrawal_dumy << ". " << acc.Withdrawals[acc_withdrawal_dumy].Amount << " on "
-                << acc.Withdrawals[acc_withdrawal_dumy].Date.showslash() << " "
-                << acc.Withdrawals[acc_withdrawal_dumy].success << endl;
-
-        cout << acc_withdrawal_dumy << ". " << acc.Withdrawals[acc_withdrawal_dumy].Amount << " on "
-             << acc.Withdrawals[acc_withdrawal_dumy].Date.showslash() << " "
-             << acc.Withdrawals[acc_withdrawal_dumy].success << endl;
+        outfile << "No Deposits for this account" << endl;
     }
+    
+    outfile << "Withdrawals:" << endl;
+    
+    if(acc.Withdrawals.size()>0)        
+        for (int acc_withdrawal_dumy = 0; acc_withdrawal_dumy < acc.Withdrawals.size(); acc_withdrawal_dumy++)
+        {
+            outfile << acc_withdrawal_dumy+1 << ". " << acc.Withdrawals[acc_withdrawal_dumy].Amount << " on "
+                    << acc.Withdrawals[acc_withdrawal_dumy].Date.showslash() << " "
+                    << acc.Withdrawals[acc_withdrawal_dumy].success << endl;
+        }
+    else
+    {
+        outfile << "No Withdrawals for this account" << endl;
+    }
+    
+    outfile << endl;
 }
 
 int main()
@@ -117,22 +125,22 @@ int main()
 
         if (inputs[0] == "Create")
         {
-            int n = Accounts.size();
+            // int n = Accounts.size();
             CreateAccount(Accounts, inputs, Codes);
             // cout << (n + 1 == Accounts.size());
         }
         else
         {
             int index;
-            for (int i = 0; i < Codes.size(); i++)
+            for (int finder = 0; finder < Codes.size(); finder++)
             {
-                if (Codes[i] == inputs[1])
+                if (inputs[1] == Accounts[finder].code)
                 {
-                    index = i;
+                    index = finder;
                     break;
                 }
-                Accounts[i].add_entry(inputs);
             }
+            Accounts[index].add_entry(inputs);
         }
     }
 
