@@ -91,9 +91,10 @@ int main()
     vector<Account> Accounts;
     vector<string>  Codes;
     vector<string>  Lines = ExtractLines(infilename);
-        
+    vector<string> inputs;
+
     for(int i=0; i<Accounts.size(); i++)    
-        vector<string> inputs = ParseLine(Lines[i]);
+        inputs = ParseLine(Lines[i]);
         if (inputs[0] == "Create"){
             CreateAccount(Accounts, inputs, Codes);
         }

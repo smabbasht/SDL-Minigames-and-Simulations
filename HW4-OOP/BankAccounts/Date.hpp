@@ -1,7 +1,3 @@
-#include<string.h>
-#include<iostream>
-using namespace std;
-
 class Date
 {
     int year, month, day;
