@@ -1,9 +1,10 @@
 #include<string>
 #include<fstream>
-#include "Account.hpp"
+#include<sstream>
+#include "Account.cpp"
 
-string outfilename = "bankinput.txt";
-string infilename = "bankinput.txt";
+string outfilename = "results.txt";
+string infilename  = "bankinput.txt";
 ofstream outfile (outfilename);
 
 vector<string> ExtractLines(string filename)
@@ -18,35 +19,25 @@ vector<string> ExtractLines(string filename)
     }
     //lines.push_back("last line");
 
-    for (int i = 0; i < 10; i++)
-    {
-        cout << lines[i] << "hi";
-    }
+    // for (int i = 0; i < 17; i++)
+    // {
+    //     cout << lines[i] << " hi\n";
+    // } 
  
     return lines;
 }
 
 vector<string> ParseLine(string str){
-    vector<string> inputs;
+    vector<string> internal; 
+    stringstream ss(str); // Turn the string into a stream. 
+    string tok; 
     
-    string word = "";
-    int i = 0;
-    for (auto x : str) 
-    {
-        if (x == ' ')
-        {
-            inputs[i] = word;
-            word = "";
-            i++;
-        }
-        else {
-            word = word + x;
-        }
-    }
-
-    inputs[i] = word;
-    return inputs;
+    while(getline(ss, tok, ' ')) { 
+        internal.push_back(tok); 
+    } 
+    return internal; 
 }
+
 
 void CreateAccount(vector<Account> acc_array, vector<string> inputs, vector<string> codes){
     Account a1(inputs);
@@ -57,10 +48,10 @@ void CreateAccount(vector<Account> acc_array, vector<string> inputs, vector<stri
 void setAccountstatuses(vector<Account> acc_vect){
     for(int i=0; i<acc_vect.size(); i++){    
         if (acc_vect[i].netBalance < 5000){
-            acc_vect[i].status = 'Active';
+            acc_vect[i].status = "Active";
         }
         else{
-            acc_vect[i].status = 'Dormant';
+            acc_vect[i].status = "Dormant";
         }
     }
 }
@@ -94,15 +85,18 @@ int main()
     vector<Account> Accounts;
     vector<string>  Codes;
     vector<string>  Lines = ExtractLines(infilename);
-    vector<string> inputs;
+    vector<string>  inputs;
  //   cout << Lines.size();
     
 
-    for(int i=0; i<Accounts.size(); i++)    
+    for(int i=0; i<Lines.size(); i++){
         inputs = ParseLine(Lines[i]);
+        //cout << inputs[0] << " " << inputs[1] << " " << inputs[2] << " " << inputs[3] << " \n";
         
         if (inputs[0] == "Create"){
+            int n = Accounts.size();
             CreateAccount(Accounts, inputs, Codes);
+            cout << (n+1==Accounts.size());
         }
         else{
             int index;
@@ -114,6 +108,7 @@ int main()
             Accounts[i].add_entry(inputs);
             }
         }
+    }
 
     setAccountstatuses(Accounts);
 

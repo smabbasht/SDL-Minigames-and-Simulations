@@ -5,9 +5,9 @@ class Date
 {
     int year, month, day;
     public:
-    Date(string date){}
+    Date(string date);
 
-    void show(){}
+    void show();
 
-    string showslash(){}
+    string showslash();
 };

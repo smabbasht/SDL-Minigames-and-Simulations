@@ -10,9 +10,9 @@ class Account
     vector<Transaction>  Withdrawals;
     vector<Transaction>     Deposits;
 
-    Account(vector<string> array){}
+    Account(vector<string> array);
 
-    string namewithoutdash(){}
+    string namewithoutdash();
 
-    void add_entry(vector<string> array){}
+    void add_entry(vector<string> array);
 };
