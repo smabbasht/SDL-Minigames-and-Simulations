@@ -1,10 +1,11 @@
-#include<iostream>
+#include <iostream>
 using namespace std;
 
 class Date
 {
     int year, month, day;
-    public:
+
+public:
     Date(string date);
 
     void show();
