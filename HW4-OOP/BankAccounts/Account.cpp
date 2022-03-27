@@ -9,7 +9,6 @@ Account::Account(vector<string> array)
     status = "Active";
     code   = array[2];
     title  = array[1];
-    // cout << array[1] << ' ' << array[2] << ' ' << array[3] << ' ' << endl;
 }
 
 string Account::namewithoutdash()
@@ -23,11 +22,10 @@ void Account::add_entry(vector<string> array)
     Date date1(array[3]);
     if (array[0] == "Withdrawal")
     {
-        Transaction with1 = {stoi(array[2]), date1, "Successful"};
+        Transaction with1 = {stoi(array[2]), date1, "Successful"}; // Object Initialization 
         if (netBalance >= with1.Amount)
-        {
-            // cout << array[2] << endl;
-            netBalance -= with1.Amount; // Error here
+        {   // Withdraws the amount only if Balance >= Amount desired to be withdrawn.
+            netBalance -= with1.Amount;
         }
         else
         {
@@ -38,9 +36,8 @@ void Account::add_entry(vector<string> array)
 
     else if (array[0] == "Deposit")
     {
-        Transaction dep1 = {stoi(array[2]), date1, "Successful"};
-        // cout << array[1] << endl;
-        netBalance += dep1.Amount; // Error Here too
+        Transaction dep1 = {stoi(array[2]), date1, "Successful"}; // Object Initialization
+        netBalance += dep1.Amount; 
         Deposits.push_back(dep1);
     }
 }

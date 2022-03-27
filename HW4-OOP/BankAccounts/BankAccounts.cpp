@@ -3,12 +3,13 @@
 #include <sstream>
 #include "Account.cpp"
 
-string outfilename = "results.txt";
-string infilename = "bankinput.txt";
+string outfilename = "bankoutput.txt";
+string infilename  = "bankinput.txt";
 ofstream outfile(outfilename);
 
 vector<string> ExtractLines(string filename)
 {
+    // This function extracts all the lines from Input File, each line is then parsed to input array
     vector<string> lines;
     string line;
 
@@ -18,18 +19,13 @@ vector<string> ExtractLines(string filename)
     {
         lines.push_back(line);
     }
-    // lines.push_back("last line");
-
-    // for (int i = 0; i < 17; i++)
-    // {
-    //     cout << lines[i] << " hi\n";
-    // }
-
     return lines;
 }
 
 vector<string> ParseLine(string str)
 {
+    // This function is applied on a line of input file and it parses the line to 4 fields which are then used
+    // for Account object instantiation and Withdrawal & Deposit functionalities.
     vector<string> internal;
     stringstream ss(str); // Turn the string into a stream.
     string tok;
@@ -42,33 +38,33 @@ vector<string> ParseLine(string str)
 }
 
 void CreateAccount(vector<Account> &acc_array,
-                   vector<string> &inputs,
-                   vector<string> &codes)
-{
+                   vector<string> &inputs)
+{   // This function creates an object of class Account and adds it to Accounts vector 
+    // using the input array parsed beforehand. 
+
     Account a1(inputs);
     acc_array.push_back(a1);
-    codes.push_back(inputs[2]);
-    // cout << "Here in Create Account" << endl;
 }
 
 void setAccountstatuses(vector<Account> &acc_vect)
-{
-    for (int acc_vect_dumy = 0; acc_vect_dumy < acc_vect.size(); acc_vect_dumy++)
+{   // Sets the Account status to Active or Dormant based on their Balance if >= 5000 or not
+    for (int acc_vect_dummy = 0; acc_vect_dummy < acc_vect.size(); acc_vect_dummy++)
     {
-        if (acc_vect[acc_vect_dumy].netBalance < 5000)
+        if (acc_vect[acc_vect_dummy].netBalance < 5000)
         {
-            acc_vect[acc_vect_dumy].status = "Dormant";
+            acc_vect[acc_vect_dummy].status = "Dormant";
         }
         else
         {
-            acc_vect[acc_vect_dumy].status = "Active";
+            acc_vect[acc_vect_dummy].status = "Active";
         }
     }
 }
 
 void WriteAccountFile(Account acc)
-{
-    string filename = "result.txt";
+{   
+    // Performs Write Operation the output file
+    string filename = "bankoutput.txt";
     fstream file;
     file.open(filename);
 
@@ -79,32 +75,32 @@ void WriteAccountFile(Account acc)
             << "Current Status: " << acc.status << endl;
 
     outfile << "Deposits:" << endl;
-    
+    // I am assuming that if an Account has no Deposits then I should write the related text written below
     if(acc.Deposits.size()>0)
     {
-        for (int acc_deposit_dumy = 0; acc_deposit_dumy < acc.Deposits.size(); acc_deposit_dumy++)
+        for (int acc_deposit_dummy = 0; acc_deposit_dummy < acc.Deposits.size(); acc_deposit_dummy++)
         {
-            outfile << acc_deposit_dumy+1 << ". " << acc.Deposits[acc_deposit_dumy].Amount << " on "
-                    << acc.Deposits[acc_deposit_dumy].Date.showslash() << endl;
+            outfile << acc_deposit_dummy+1 << ". " << acc.Deposits[acc_deposit_dummy].Amount << " on "
+                    << acc.Deposits[acc_deposit_dummy].Date.showslash() << endl;
         }
     }
     else
     {
-        outfile << "No Deposits for this account" << endl;
+        outfile << "No Deposits for this Account" << endl;
     }
     
     outfile << "Withdrawals:" << endl;
-    
+    // I am assuming that if an Account has no Withdrawals then I should write the related text written below
     if(acc.Withdrawals.size()>0)        
-        for (int acc_withdrawal_dumy = 0; acc_withdrawal_dumy < acc.Withdrawals.size(); acc_withdrawal_dumy++)
-        {
-            outfile << acc_withdrawal_dumy+1 << ". " << acc.Withdrawals[acc_withdrawal_dumy].Amount << " on "
-                    << acc.Withdrawals[acc_withdrawal_dumy].Date.showslash() << " "
-                    << acc.Withdrawals[acc_withdrawal_dumy].success << endl;
+        for (int acc_withdrawal_dummy = 0; acc_withdrawal_dummy < acc.Withdrawals.size(); acc_withdrawal_dummy++)
+        {   
+            outfile << acc_withdrawal_dummy+1 << ". " << acc.Withdrawals[acc_withdrawal_dummy].Amount << " on "
+                    << acc.Withdrawals[acc_withdrawal_dummy].Date.showslash() << " "
+                    << acc.Withdrawals[acc_withdrawal_dummy].success << endl;
         }
     else
     {
-        outfile << "No Withdrawals for this account" << endl;
+        outfile << "No Withdrawals for this Account" << endl;
     }
     
     outfile << endl;
@@ -112,27 +108,23 @@ void WriteAccountFile(Account acc)
 
 int main()
 {
-    vector<Account> Accounts;
-    vector<string> Codes;
-    vector<string> Lines = ExtractLines(infilename);
-    vector<string> inputs;
-    //   cout << Lines.size();
+    vector<Account> Accounts; // Accounts vector to keep track of Accounts
+    vector<string>  Lines = ExtractLines(infilename); // Extracts Lines from input file and stores in the vector Lines
+    vector<string>  inputs; // vector in which the parsed line will be stored
 
     for (int i = 0; i < Lines.size(); i++)
     {
         inputs = ParseLine(Lines[i]);
-        // cout << inputs[0] << " " << inputs[1] << " " << inputs[2] << " " << inputs[3] << " \n";
 
         if (inputs[0] == "Create")
         {
-            // int n = Accounts.size();
-            CreateAccount(Accounts, inputs, Codes);
-            // cout << (n + 1 == Accounts.size());
+            CreateAccount(Accounts, inputs);
         }
         else
         {
+            // Finding which index of Accounts vector is related to the query
             int index;
-            for (int finder = 0; finder < Codes.size(); finder++)
+            for (int finder = 0; finder < Accounts.size(); finder++)
             {
                 if (inputs[1] == Accounts[finder].code)
                 {
@@ -140,14 +132,17 @@ int main()
                     break;
                 }
             }
+            // Adds the transaction to corresponding vector
             Accounts[index].add_entry(inputs);
         }
     }
 
     setAccountstatuses(Accounts);
+    // Sets the Account statuses for all elements in Accounts vector
 
     for (int i = 0; i < Accounts.size(); i++)
     {
+        // Writing the Output file for each Account
         WriteAccountFile(Accounts[i]);
     }
     return 0;

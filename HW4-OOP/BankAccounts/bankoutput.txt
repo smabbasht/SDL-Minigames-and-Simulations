@@ -7,7 +7,7 @@ Deposits:
 1. 30000 on 11/03/21
 Withdrawals:
 1. 4000 on 12/04/21 Successful
-2. 40000 on 15/jun/21 Denied
+2. 40000 on 15/06/21 Denied
 
 Account Title: Ayesha Sultan
 Account Code: AS550
@@ -15,7 +15,7 @@ Initial Balance: 50000
 Available Balance: 10000
 Current Status: Active
 Deposits:
-No Deposits for this account
+No Deposits for this Account
 Withdrawals:
 1. 40000 on 23/04/21 Successful
 2. 60000 on 5/05/21 Denied
@@ -26,7 +26,7 @@ Initial Balance: 1200000
 Available Balance: 1150000
 Current Status: Active
 Deposits:
-No Deposits for this account
+No Deposits for this Account
 Withdrawals:
 1. 50000 on 5/05/21 Successful
 
@@ -38,7 +38,7 @@ Current Status: Active
 Deposits:
 1. 30000 on 25/04/21
 Withdrawals:
-1. 2000 on 22/jun/21 Successful
+1. 2000 on 22/06/21 Successful
 
 Account Title: Multan Sultan
 Account Code: MS443
@@ -46,7 +46,7 @@ Initial Balance: 500000
 Available Balance: 492000
 Current Status: Active
 Deposits:
-1. 2000 on 20/jun/21
+1. 2000 on 20/06/21
 Withdrawals:
 1. 10000 on 27/04/21 Successful
 
@@ -58,5 +58,5 @@ Current Status: Active
 Deposits:
 1. 20000 on 28/04/21
 Withdrawals:
-No Withdrawals for this account
+No Withdrawals for this Account
 
